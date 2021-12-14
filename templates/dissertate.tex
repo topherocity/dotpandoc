@@ -1,0 +1,79 @@
+% by Sean McKenna
+% dissertate template adapted for my dissertation
+
+
+\documentclass[dsingle]{styles/Dissertate}
+
+
+% load packages
+\usepackage{styles/packages}
+
+
+% load custom styles & commands
+\usepackage{styles/custom}
+
+
+% manually clean up justified text
+\sloppy
+
+
+% load bibliography & journal abbreviations file
+\addbibresource{$journals$}
+\addbibresource{$references$}
+
+
+\begin{document}
+
+
+% dissertation info
+\title{$title$}
+\author{$author$}
+\advisor{$advisor$}
+
+
+% degree info
+\degree{$degree$}
+\field{$degreeIn$}
+\degreeyear{$year$}
+\degreeterm{$term$}
+\degreemonth{$month$}
+\department{$department$}
+\university{$university$}
+\universitycity{$city$}
+\universitystate{$state$}
+
+
+% front matter
+\frontmatter
+\maketitle
+\copyrightpage{$year$}
+\setstretch{\dnormalspacing}
+\abstractpage{$abstract$}
+\toc
+\acknowledgments{$acknowledge$}
+
+
+% chapters
+\mainmatter
+$for(chapter)$
+  \include{$chapter$}
+$endfor$
+\setstretch{\dnormalspacing}
+
+
+% back matter
+\begin{appendices}
+$for(appendix)$
+  \include{$appendix$}
+$endfor$
+\end{appendices}
+\clearpage
+
+
+% references
+\addcontentsline{toc}{chapter}{References}%
+\singlespace
+\printbibliography[title={References}]
+
+
+\end{document}
